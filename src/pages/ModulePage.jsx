@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MODULES } from '../modules/index.js';
+import Quiz from '../components/Quiz.jsx';
+import { QUIZZES } from '../data/quizzes.js';
 
 export default function ModulePage({ module, completed, toggleComplete }) {
   const idx = MODULES.findIndex(m => m.slug === module.slug);
@@ -14,6 +16,7 @@ export default function ModulePage({ module, completed, toggleComplete }) {
       <h1>{module.title}</h1>
       <p className="module-lead">{module.blurb}</p>
       <Component />
+      {QUIZZES[module.slug] && <Quiz questions={QUIZZES[module.slug]} />}
       <div className="complete-row">
         <button className={'complete-btn' + (done ? '' : ' undone')} onClick={() => toggleComplete(module.slug)}>
           {done ? '✓ Completed' : 'Mark module as complete'}

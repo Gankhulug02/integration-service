@@ -38,13 +38,27 @@ src/
 │   ├── Exercise.jsx         # exercise with collapsible solution
 │   ├── Sidebar.jsx          # navigation with completion checkmarks + progress bar
 │   └── PathDiagram.jsx      # SVG learning-path (snake layout, clickable nodes)
+│   └── Quiz.jsx             # multiple-choice quiz with instant feedback
 ├── pages/
 │   ├── Landing.jsx          # hero, path diagram, feature grid, module list
-│   └── ModulePage.jsx       # module chrome: numbering, mark-complete, prev/next pager
+│   ├── ModulePage.jsx       # module chrome: numbering, quiz, mark-complete, pager
+│   ├── Exam.jsx             # final exam: random 12-question sample, 70% to pass
+│   └── Flashcards.jsx       # flip-card trainer ("Got it" / "Again" rotation)
+├── data/
+│   ├── quizzes.js           # MCQs per module slug (also feeds the final exam)
+│   └── flashcards.js        # term/definition study deck
 └── modules/
     ├── index.js             # course registry (order = numbering + routes)
     └── *.jsx                # one component per module (content lives here)
 ```
+
+## Study tools
+
+Each module ends with a **Check your knowledge** quiz (instant feedback + explanations).
+The sidebar's **Study tools** section adds a **Final Exam** (12 random questions from the
+whole course, 70% to pass, retake with a fresh set) and **Flashcards** (28 core terms;
+"Got it" removes a card from the round, "Again" keeps it in rotation).
+To extend them, edit `src/data/quizzes.js` (keyed by module slug) and `src/data/flashcards.js`.
 
 ## Adding a module
 

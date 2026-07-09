@@ -4,6 +4,8 @@ import { MODULES } from './modules/index.js';
 import Sidebar from './components/Sidebar.jsx';
 import Landing from './pages/Landing.jsx';
 import ModulePage from './pages/ModulePage.jsx';
+import Exam from './pages/Exam.jsx';
+import Flashcards from './pages/Flashcards.jsx';
 
 const STORAGE_KEY = 'camel-quarkus-course-progress';
 
@@ -48,6 +50,8 @@ export default function App() {
               <Route key={m.slug} path={'/module/' + m.slug}
                 element={<ModulePage module={m} completed={completed} toggleComplete={toggleComplete} />} />
             ))}
+            <Route path="/exam" element={<Exam />} />
+            <Route path="/flashcards" element={<Flashcards />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
